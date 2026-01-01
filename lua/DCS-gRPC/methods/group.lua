@@ -48,3 +48,14 @@ GRPC.methods.groupDestroy = function(params)
 
   return GRPC.success({})
 end
+
+GRPC.methods.groupIsExist = function(params)
+  -- https://wiki.hoggitworld.com/view/DCS_func_getByName
+  local group = Group.getByName(params.groupName)
+  if group == nil then
+    return GRPC.success({isExist = false})
+  end
+
+  local isExist = group:isExist()
+  return GRPC.success({isExist = isExist})
+end

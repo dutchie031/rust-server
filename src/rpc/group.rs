@@ -29,4 +29,12 @@ impl GroupService for MissionRpc {
         let res = self.request("groupDestroy", request).await?;
         Ok(Response::new(res))
     }
+
+    async fn isExist(
+        &self,
+        request: Request<group::v0::IsExistRequest>,
+    ) -> Result<Response<group::v0::IsExistResponse>, Status> {
+        let res = self.request("groupIsExist", request).await?;
+        Ok(Response::new(res))
+    }
 }
